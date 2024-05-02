@@ -1,0 +1,11 @@
+find(0): 1
+find(1): 1
+find(2): 1
+find(3): 1
+find(4): 1
+find(5): 0
+(67)Freeing allocated memory of node.value = 0
+Freeing allocated memory of node.value = 1
+Freeing allocated memory of node.value = 2
+Freeing allocated memory of node.value = 3
+Freeing allocated memory of node.value = 4
