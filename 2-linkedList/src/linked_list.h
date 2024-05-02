@@ -4,12 +4,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node node;
 
-struct node{
+// typedef struct node node;
+
+typedef struct node{
     int value;    
     node* next;
-};
+}node;
 
 struct LinkedList{
     node* head;
@@ -28,7 +29,6 @@ struct LinkedList{
         //TODO: check if the HEAD IS NULL
         node* current;
         
-
         current = this->head;
 
         while(current->next != NULL){
@@ -36,25 +36,34 @@ struct LinkedList{
         }        
         node* newNode = (node*) malloc(sizeof(node));
         newNode->value = newValue;
-        newNode->next = NULL;
 
         current->next = newNode;
         return true;
     }
 
-    int pop(int value){
-        return 1;
+    bool popValue(int value){
+        node* previous = NULL;
+        node* current = this->head;
+
+        while( current != NULL ){
+            if( current->value == value){
+                if(previous != NULL)
+                    previous->next = current->next;
+                free(current);
+                return true;
+            }
+            previous = current;
+            current = current->next;
+        }
+
+        return false;
     }
 
     bool find(int value){
+        //TODO IMPROVE CODE
         node* current;
-        if(this->head == NULL)
-            return false;
-
-        if(this->head->value == value)
-            return true;
+        current = this->head;
         
-        current = this->head->next;
         while( current != NULL){
             if(current->value == value)
                 return true;
